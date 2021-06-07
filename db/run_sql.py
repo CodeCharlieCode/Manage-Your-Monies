@@ -1,12 +1,12 @@
 import psycopg2
-import psycopg2.extras
+import psycopg2.extras as ext
 
 def run_sql(sql, values = None):
     results = []
     conn = None
     try:
-        conn = psycopg2.connect("dbname='spending'")
-        cur = conn.cursor(cursor_factory=psycopg2.extra.DictCursor)
+        conn = psycopg2.connect("dbname='transactions'")
+        cur = conn.cursor(cursor_factory= ext.DictCursor)
         cur.execute(sql, values)
         conn.commit()
         results. cur.fetchall()
