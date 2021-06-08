@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Merchants</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    {% for merchant in merchants %}
+    <tr>
+        <td><a href="/merchants/{{ merchant.id }}"> {{merchant.name}}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
