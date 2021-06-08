@@ -10,14 +10,14 @@ CREATE TABLE merchants (
 
 CREATE TABLE categories (
     id SERIAL PRIMARY KEY,
-    category_name VARCHAR(255)
+    name VARCHAR(255)
 );
 
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     merchant_id INT REFERENCES merchants(id),
     category_id INT REFERENCES categories(id),
-    description VARCHAR(255)
-    amount INT
+    description VARCHAR(255),
+    amount FLOAT
 
 );
