@@ -4,8 +4,8 @@ import repositories.merchant_repository as merchant_repository
 import repositories.category_repository as cateogry_repository
 
 def save(transaction):
-    sql = "INSERT INTO transactions (merchant_id, category_id, description, amount) VALUES (%s, %s, %s, %s) RETURNING id"
-    values = [transaction.merchant.id, transaction.category.id, transaction.description, transaction.amount]
+    sql = "INSERT INTO transactions (merchant_id, category_id, description, amount, date) VALUES (%s, %s, %s, %s, %s) RETURNING id"
+    values = [transaction.merchant.id, transaction.category.id, transaction.description, transaction.amount, transaction.date]
     results = run_sql(sql, values)
     transaction.id = results[0]['id']
     return transaction
@@ -19,9 +19,14 @@ def select_all():
     for result in results:
         merchant = merchant_repository.select(result['merchant_id'])
         category = cateogry_repository.select(result['category_id'])
-        transaction = Transaction(merchant, category, result['description'], result['amount'], result['id'])
+        transaction = Transaction(merchant, category, result['description'], result['amount'], result['date'], result['id'])
         transactions.append(transaction)
     return transactions
+
+def delete_all():
+    sql = "DELETE FROM transactions"
+    run_sql(sql)
+    
 
 # def delete(id):
 #     sql = "DELETE FROM transactions WHERE id = %s"

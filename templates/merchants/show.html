@@ -9,12 +9,14 @@
     <tr>
         <th>Merchant</th>
         <th>Amount</th>
+        <th>Date</th>
     </tr>
     {% for transaction in transactions %}
     <tr>
      {% if transaction.merchant.name == merchant.name %}
         <td> {{ transaction.merchant.name }}</td>
         <td> {{ transaction.amount }}</td>
+        <td> {{ transaction.date.strftime("%x") }}</td>
          {% endif %}
     </tr>
         
