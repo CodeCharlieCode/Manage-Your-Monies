@@ -10,3 +10,7 @@ def merchants():
     merchants = merchant_repository.select_all()
     return render_template("merchants/index.html", merchants = merchants)
 
+# @merchants_blueprint.route("/merchants/<id>")
+# def show(id):
+#     merchant = merchant_repository.select(id)
+
