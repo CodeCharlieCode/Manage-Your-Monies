@@ -1,3 +1,6 @@
+from models.category import Category
+from pdb import run
+from models.transactions import Transaction
 from db.run_sql import run_sql
 from models.merchant import Merchant
 
@@ -31,3 +34,16 @@ def select(id):
 def delete_all():
     sql = "DELETE FROM merchants"
     run_sql(sql)
+
+def categories(merchant):
+    categories = []
+
+    sql = "SELECT categories.* FROM categories INNER JOIN transactions ON transactions.category_id = categories.id WHERE transactions.merchant_id = %s"
+    values = [merchant.id]
+    results = run_sql(sql, values)
+
+    for result in results:
+        category = Category(result['name'], result['id'])
+        categories.append(category)
+    
+    return categories

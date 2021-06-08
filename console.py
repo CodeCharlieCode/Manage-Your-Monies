@@ -31,4 +31,8 @@ transaction_repository.save(transaction1)
 
 transaction2 = Transaction(merchant3, category2, "Purchased a film", 1.99)
 transaction_repository.save(transaction2)
+
+transaction3 = Transaction(merchant1, category1, "Top up shop", 5)
+transaction_repository.save(transaction3)
+
 pdb.set_trace()

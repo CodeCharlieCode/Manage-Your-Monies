@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{merchant.name}} </h1>
+
+<h2> Recent Transactions</h2>
+
+<ul>
+    {% for transaction in transactions %}
+    <li> {{ transaction.merchant.name }} - {{ transaction.amount}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
