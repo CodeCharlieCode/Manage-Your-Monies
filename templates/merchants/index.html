@@ -10,6 +10,11 @@
     <tr>
         <td><a href="/merchants/{{ merchant.id }}"> {{merchant.name}}</a></td>
     </tr>
+    <tr>
+        <form class="delete-form" action="/merchants/{{merchant.id}}/delete" method="POST">
+        <td><button type="submit">Delete Merchant</button></td>
+        </form>
+    </tr>
     {% endfor %}
 </table>
 {% endblock %}
