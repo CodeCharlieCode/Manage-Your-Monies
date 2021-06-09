@@ -23,3 +23,10 @@ def show(id):
 def new():
     merchants = merchant_repository.select_all()
     return render_template("merchants/new.html", merchants = merchants)
+
+@merchants_blueprint.route("/merchants", methods=['POST'])
+def create_merchant():
+    name = request.form['name']
+    merchant = Merchant(name)
+    merchant_repository.save(merchant)
+    return redirect("/merchants/")
