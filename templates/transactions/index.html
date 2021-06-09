@@ -1,7 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1> Recent Transactions</h1>
 
-ALL OF THE TRANSACTIONS WILL BE HERE...HOPEFULLY WHOOP WHOOP
-
+<table>
+    <tr>
+        <th>Merchant</th>
+        <th>Amount</th>
+        <th>Tag</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+        <td> {{ transaction.merchant.name }}</td>
+        <td> {{ transaction.amount }}</td>
+        <td> {{ transaction.category.name }}</td>
+        <td> {{ transaction.description }} </td>
+        <td> {{ transaction.date.strftime("%x") }}</td>
+    </tr>
+    
+    {% endfor %}
+</table>
 {% endblock %}
