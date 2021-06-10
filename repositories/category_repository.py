@@ -1,7 +1,6 @@
-from repositories.merchant_repository import categories
 from db.run_sql import run_sql
 from models.category import Category
-from models.merchant import Merchant
+
 
 def save(category):
     sql = "INSERT INTO categories( name ) VALUES( %s ) RETURNING id"
@@ -34,3 +33,8 @@ def select(id):
 def delete_all():
     sql = "DELETE FROM categories"
     run_sql(sql)
+
+def update(category):
+    sql = "UPDATE categories SET (name) = (%s) WHERE id = %s"
+    values = [category.name, category.id]
+    run_sql(sql, values)

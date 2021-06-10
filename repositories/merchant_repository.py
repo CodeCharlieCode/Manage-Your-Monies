@@ -1,5 +1,4 @@
 from models.category import Category
-from models.transactions import Transaction
 from db.run_sql import run_sql
 from models.merchant import Merchant
 

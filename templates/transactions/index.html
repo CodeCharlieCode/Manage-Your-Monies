@@ -17,7 +17,7 @@
         <td> {{ transaction.amount }}</td>
         <td> {{ transaction.category.name }}</td>
         <td> {{ transaction.description }} </td>
-        <td> {{ transaction.date.strftime("%x") }}</td>
+        <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
     </tr>
     <tr>
         <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">

@@ -18,7 +18,12 @@
   </div>
 
   <div>
-      TAG WILL GO HERE
+      <label for="category">Category</label>
+      <select id="category" name="category_id">
+          {% for category in categories %}
+            <option value="{{ category.id }}"> {{ category.name }}</option>
+          {% endfor %}  
+      </select>
   </div>
 
   <div>

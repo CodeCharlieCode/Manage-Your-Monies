@@ -30,4 +30,12 @@ def create_category():
     category = Category(name)
     category_repository.save(category)
     return redirect("/categories/")
+
+@category_blueprint.route("/categories/category/<id>", methods=['POST'])
+def update_category(id):
+    name = request.form['category']
+    category = Category(name, id)
+    category_repository.update(category)
+    return redirect("/categories/")
+
     
