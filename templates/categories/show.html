@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{ category.name }}</h1>
+
+<h2>Recent Transactions</h2>
+
+<table>
+    <tr>
+        <th>Merchant</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+        {% if transaction.category.name == category.name %}
+            <td> {{ transaction.merchant.name }}</td>
+            <td> {{ transaction.amount }}</td>
+            <td> {{ transaction.description }}</td>
+            <td> {{ transaction.date.strftime("%x") }}</td>
+         {% endif %}
+    </tr>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

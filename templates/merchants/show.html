@@ -10,14 +10,16 @@
         <th>Merchant</th>
         <th>Amount</th>
         <th>Date</th>
+        <th>Category</th>
     </tr>
     {% for transaction in transactions %}
     <tr>
-     {% if transaction.merchant.name == merchant.name %}
-        <td> {{ transaction.merchant.name }}</td>
-        <td> {{ transaction.amount }}</td>
-        <td> {{ transaction.date.strftime("%x") }}</td>
-         {% endif %}
+        {% if transaction.merchant.name == merchant.name %}
+            <td> {{ transaction.merchant.name }}</td>
+            <td> {{ transaction.amount }}</td>
+            <td> {{ transaction.date.strftime("%x") }}</td>
+            <td> {{ transaction.category.name }}</td>
+        {% endif %}
     </tr>
     
     {% endfor %}
