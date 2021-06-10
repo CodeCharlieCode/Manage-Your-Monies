@@ -23,3 +23,11 @@ def show(id):
 def new():
     categories = category_repository.select_all
     return render_template("categories/new.html", categories = categories)
+
+@category_blueprint.route("/categories", methods=['POST'])
+def create_category():
+    name = request.form['category']
+    category = Category(name)
+    category_repository.save(category)
+    return redirect("/categories/")
+    
