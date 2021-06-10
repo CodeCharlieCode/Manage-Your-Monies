@@ -29,3 +29,8 @@ def create_transaction():
     transaction = Transaction(merchant, merchant, description, amount, date)
     transaction_repository.save(transaction)
     return redirect("/transactions")
+
+@transactions_blueprint.route("/transactions/<id>/delete", methods=['POST'])
+def delete_transaction(id):
+    transaction_repository.delete(id)
+    return redirect("/transactions")

@@ -19,6 +19,11 @@
         <td> {{ transaction.description }} </td>
         <td> {{ transaction.date.strftime("%x") }}</td>
     </tr>
+    <tr>
+        <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
+        <td><button type="submit">Delete Transaction</button></td>
+        </form>
+    </tr>
     
     {% endfor %}
 </table>
