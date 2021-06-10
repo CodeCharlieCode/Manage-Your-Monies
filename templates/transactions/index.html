@@ -14,17 +14,41 @@
     {% for transaction in transactions %}
     <tr>
         <td> {{ transaction.merchant.name }}</td>
-        <td> {{ transaction.amount }}</td>
+        <td> {{ "£%.2f"|format(transaction.amount) }}</td>
         <td> {{ transaction.category.name }}</td>
         <td> {{ transaction.description }} </td>
         <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
     </tr>
+
+
+
+
     <tr>
         <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
         <td><button type="submit">Delete Transaction</button></td>
         </form>
     </tr>
-    
     {% endfor %}
+
+
+    Total:{{ total }}
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    
+
+    
 </table>
 {% endblock %}
