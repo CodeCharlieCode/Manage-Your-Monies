@@ -1,3 +1,4 @@
+import pdb
 from controllers.merchants_controller import merchants
 from flask import Blueprint, Flask, redirect, render_template, request
 
@@ -34,3 +35,15 @@ def create_transaction():
 def delete_transaction(id):
     transaction_repository.delete(id)
     return redirect("/transactions")
+
+@transactions_blueprint.route("/transactions/<id>", methods=['POST'])
+def update_transaction(id):
+    merchant_id = request.form['merchant_id']
+    amount = request.form['amount']
+    description = request.form['description']
+    date = request.form['date']
+    merchant = merchant_repository.select(merchant_id)
+    transaction = Transaction(merchant, merchant, description, amount, date, id)
+    transaction_repository.update(transaction)
+    return redirect("/transactions")
+
