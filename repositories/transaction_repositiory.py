@@ -38,14 +38,14 @@ def update(transaction):
     values = [transaction.merchant.name, transaction.category.name, transaction.description, transaction.amount, transaction.date, transaction.id]
     run_sql(sql, values)
 
-# def select(id):
-#     transaction = None
-#     sql = "SELECT * FROM transactions WHERE id = %s"
-#     values = [id]
-#     result = run_sql(sql, values)[0]
+def select(id):
+    transaction = None
+    sql = "SELECT * FROM transactions WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
 
-#     if result is not None:
-#         merchant = merchant_repository.select(result['merchant_id'])
-#         category = cateogry_repository.select(result['category_id'])
-#         transaction = Transaction(merchant, category, result['description'], result['amount'], result['id'])
-#     return transaction
+    if result is not None:
+        merchant = merchant_repository.select(result['merchant_id'])
+        category = category_repository.select(result['category_id'])
+        transaction = Transaction(merchant, category, result['description'], result['amount'], result['date'], result['id'])
+    return transaction

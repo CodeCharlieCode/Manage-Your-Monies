@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/transactions/{{transaction.id}}" method="post">
+    <div>
+        <label for="merchant">Merchant</label>
+        <select id="merchant" name="merchant_id">
+        {% for merchant in merchants %}
+            <option value="{{ merchant.id }}"
+                {% if transaction.merchant.id == merchant.id %} selected ="selected" {% endif %}>
+                {{ merchant.name }}
+            </option>
+        {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="amount">Amount</label>
+      <input type="float" id="amount" name="amount" value="{{transaction.amount}}" required>
+    </div>
+
+    <div>
+        <label for="category">Category</label>
+        <select id="category" name="category_id">
+            {% for category in categories %}
+                <option value="{{ category.id }}"
+                    {%if transaction.category.id == category.id %} selected="selected" {% endif %}> 
+                    {{ category.name }}
+                </option>
+            {% endfor %}  
+        </select>
+    </div>
+
+    <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" value="{{transaction.description}}">
+    </div>
+  
+    <div>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" value="{{transaction.date}}" required>
+    </div>
+  
+    <button type="submit">Update Transaction</button>
+
+</form>
+
+{% endblock %}

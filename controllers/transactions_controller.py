@@ -52,3 +52,11 @@ def update_transaction(id):
     transaction_repository.update(transaction)
     return redirect("/transactions")
 
+@transactions_blueprint.route("/transactions/<id>/edit", methods=['GET'])
+def edit_transaction(id):
+    transaction = transaction_repository.select(id)
+    categories = category_repository.select_all()
+    merchants = merchant_repository.select_all()
+    return render_template("/transactions/edit.html", transaction = transaction, categories = categories, merchants = merchants)
+
+
