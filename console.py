@@ -3,10 +3,11 @@ from models.category import Category
 import pdb
 from models.merchant import Merchant
 from models.category import Category
-
+from models.profile import Profile
 import repositories.merchant_repository as merchant_repository 
 import repositories.category_repository as category_repository
 import repositories.transaction_repositiory as transaction_repository
+import repositories.profile_repository as profile_repository 
 
 merchant_repository.delete_all()
 category_repository.delete_all()
@@ -14,6 +15,12 @@ transaction_repository.delete_all()
 
 import datetime
 x = datetime.datetime.now()
+
+profile1= Profile(100, 90)
+profile_repository.save(profile1)
+
+profile2= Profile(120,80)
+profile_repository.save(profile2)
 
 merchant1 = Merchant("Tesco")
 merchant_repository.save(merchant1)
