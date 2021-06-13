@@ -6,7 +6,8 @@
 <table>
     <tr>
         <th>Merchant</th>
-        <th>Amount</th>
+        <th>Amount £</th>
+        <th>Loyalt card amount</th>
         <th>Tag</th>
         <th>Description</th>
         <th>Date</th>
@@ -15,6 +16,7 @@
     <tr>
         <td> {{ transaction.merchant.name }}</td>
         <td> {{ "£%.2f"|format(transaction.amount) }}</td>
+        <td> {{ loyalty_card }}</td>
         <td> {{ transaction.category.name }}</td>
         <td> {{ transaction.description }} </td>
         <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
@@ -31,7 +33,7 @@
     {% endfor %}
 
 
-    Total:{{ total }}
+    Total:{{ "£%.2f"|format(total_amount) }}
 
 
     

@@ -31,11 +31,18 @@ def create_category():
     category_repository.save(category)
     return redirect("/categories/")
 
-@category_blueprint.route("/categories/category/<id>", methods=['POST'])
+@category_blueprint.route("/categories/<id>/delete", methods = ['POST'])
+def delete_category(id):
+    category_repository.delete(id)
+    return redirect("/categories/")
+
+@category_blueprint.route("/categories/<id>", methods=['POST'])
 def update_category(id):
     name = request.form['category']
     category = Category(name, id)
     category_repository.update(category)
     return redirect("/categories/")
+
+
 
     

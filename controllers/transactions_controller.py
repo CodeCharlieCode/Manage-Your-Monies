@@ -13,7 +13,8 @@ def transactions():
     total = 0
     for transaction in transactions:
         total += transaction.amount
-    return render_template("transactions/index.html", transactions = transactions, total = total)
+    total_amount = round(total, 2)
+    return render_template("transactions/index.html", transactions = transactions, total_amount = total_amount)
 
 @transactions_blueprint.route("/transactions/new")
 def new():
