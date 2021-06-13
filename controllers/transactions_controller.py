@@ -36,20 +36,14 @@ def create_transaction():
     transaction_repository.save(transaction)
     return redirect("/transactions")
 
+@transactions_blueprint.route("/transactions/<id>", methods=['GET'])
+def show_transaction(id):
+    transaction = transaction_repository(id)
+    return render_template("transactions/index.html", transaction = transaction)
+
 @transactions_blueprint.route("/transactions/<id>/delete", methods=['POST'])
 def delete_transaction(id):
     transaction_repository.delete(id)
-    return redirect("/transactions")
-
-@transactions_blueprint.route("/transactions/<id>", methods=['POST'])
-def update_transaction(id):
-    merchant_id = request.form['merchant_id']
-    amount = request.form['amount']
-    description = request.form['description']
-    date = request.form['date']
-    merchant = merchant_repository.select(merchant_id)
-    transaction = Transaction(merchant, merchant, description, amount, date, id)
-    transaction_repository.update(transaction)
     return redirect("/transactions")
 
 @transactions_blueprint.route("/transactions/<id>/edit", methods=['GET'])
@@ -59,4 +53,17 @@ def edit_transaction(id):
     merchants = merchant_repository.select_all()
     return render_template("/transactions/edit.html", transaction = transaction, categories = categories, merchants = merchants)
 
+
+@transactions_blueprint.route("/transactions/<id>", methods=['POST'])
+def update_transaction(id):
+    merchant_id = request.form['merchant_id']
+    category_id = request.form['category_id']
+    amount = request.form['amount']
+    description = request.form['description']
+    date = request.form['date']
+    merchant = merchant_repository.select(merchant_id)
+    category = category_repository.select(category_id)
+    transaction = Transaction(merchant, category, description, amount, date, id)
+    transaction_repository.update(transaction)
+    return redirect("/transactions")
 
