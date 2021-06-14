@@ -1,5 +1,8 @@
+from models.transactions import Transaction
 from db.run_sql import run_sql
 from models.category import Category
+import repositories.merchant_repository as merchant_repository
+import repositories.category_repository as category_repository
 
 
 def save(category):
@@ -43,3 +46,18 @@ def update(category):
     sql = "UPDATE categories SET (name, budget) = (%s) WHERE id = %s"
     values = [category.name, category.budget, category.id]
     run_sql(sql, values)
+
+# def transactions(category):
+#     transactions = []
+
+#     sql = "SELECT categories.* FROM categories INNER JOIN transactions ON transactions.category_id = categories.id WHERE transactions.amount = %s"
+#     values = [category.id]
+#     results = run_sql(sql, values)
+
+#     for result in results:
+#         merchant = merchant_repository.select(result['merchant_id'])
+#         category = category_repository.select(result['category_id'])
+#         transaction = Transaction(merchant, category, result['description'], result['amount'], result['date'], result['id'])
+#         transactions.append(transaction)
+    
+#     return transactions

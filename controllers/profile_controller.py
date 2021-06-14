@@ -1,8 +1,10 @@
+from controllers.category_controller import categories
 from flask import Blueprint, Flask, redirect,render_template, request
 
 from models.profile import Profile
 import repositories.profile_repository as profile_repository
 import repositories.transaction_repositiory as transaction_repository
+import repositories.category_repository as category_repository
 
 profile_blueprint = Blueprint("profiles",__name__)
 
@@ -10,16 +12,21 @@ profile_blueprint = Blueprint("profiles",__name__)
 def profiles():
     profiles = profile_repository.select_all()
     transactions = transaction_repository.select_all()
+    categories = category_repository.select_all()
 
     total = 0
     for transaction in transactions:
         total += transaction.amount
     total_amount = round(total, 2)
+    total1 = 0
+    for category in categories:
+        total1 += category.budget
+    sum_of_budgets = round(total1, 2)
     # for profile in profiles:
     #     over_budget = profile.total_budget - total_amount
     #     if total_amount > profile.balance:
     #         return render_template("profiles/insufficient.html", profiles = profiles, profile = profile, over_budget = over_budget)  
-    return render_template("profiles/index.html", profiles = profiles, total_amount = total_amount)
+    return render_template("profiles/index.html", profiles = profiles, total_amount = total_amount, sum_of_budgets = sum_of_budgets )
 
 @profile_blueprint.route("/profiles/new")
 def new():

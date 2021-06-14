@@ -10,13 +10,24 @@ category_blueprint = Blueprint("categories",__name__)
 @category_blueprint.route("/categories/")
 def categories():
     categories = category_repository.select_all()
-    return render_template("categories/index.html", categories = categories)
+    total = 0
+    for category in categories:
+        total += category.budget
+    sum_of_budgets = round(total, 2)
+    return render_template("categories/index.html", categories = categories, sum_of_budgets = sum_of_budgets)
 
 @category_blueprint.route("/categories/category/<id>")
 def show(id):
     category = category_repository.select(id)
-    transactions = transaction_repository.select_all() 
-    return render_template("categories/show.html", category = category, transactions = transactions)
+    # transactions = category_repository.transactions(category)
+    transactions =transaction_repository.select_all()
+    total = 0
+    for transaction in transactions:
+        if category.id == transaction.category.id:
+            total += transaction.amount
+        total_amount = round(total, 2)
+    remaining_budget = category.budget -total_amount
+    return render_template("categories/show.html", category = category, transactions = transactions, remaining_budget =remaining_budget)
 
 @category_blueprint.route("/categories/new/")
 def new():
