@@ -3,8 +3,8 @@ from models.category import Category
 
 
 def save(category):
-    sql = "INSERT INTO categories( name ) VALUES( %s ) RETURNING id"
-    values = [category.name]
+    sql = "INSERT INTO categories( name, budget ) VALUES( %s, %s) RETURNING id"
+    values = [category.name, category.budget]
     results = run_sql(sql, values)
     category.id = results[0]['id']
     return category
@@ -16,7 +16,7 @@ def select_all():
     results = run_sql(sql)
 
     for result in results:
-        category = Category(result['name'], result['id'])
+        category = Category(result['name'], result['budget'],result['id'])
         categories.append(category)
     return categories
 
@@ -27,7 +27,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        category = Category(result['name'], result['id'])
+        category = Category(result['name'],result['budget'], result['id'])
     return category
 
 def delete_all():
@@ -40,6 +40,6 @@ def delete(id):
     run_sql(sql,values)
 
 def update(category):
-    sql = "UPDATE categories SET (name) = (%s) WHERE id = %s"
-    values = [category.name, category.id]
+    sql = "UPDATE categories SET (name, budget) = (%s) WHERE id = %s"
+    values = [category.name, category.budget, category.id]
     run_sql(sql, values)

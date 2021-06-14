@@ -26,7 +26,8 @@ def new():
 @category_blueprint.route("/categories", methods=['POST'])
 def create_category():
     name = request.form['category']
-    category = Category(name)
+    budget = request.form['budget']
+    category = Category(name, budget)
     category_repository.save(category)
     return redirect("/categories/")
 
@@ -38,7 +39,8 @@ def delete_category(id):
 @category_blueprint.route("/categories/<id>", methods=['POST'])
 def update_category(id):
     name = request.form['category']
-    category = Category(name, id)
+    budget = request.form['budget']
+    category = Category(name, budget, id)
     category_repository.update(category)
     return redirect("/categories/")
 

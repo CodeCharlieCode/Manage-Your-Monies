@@ -9,6 +9,7 @@
     <tr>
         <th>Merchant</th>
         <th>Amount</th>
+        <th>Description</th>
         <th>Date</th>
     </tr>
     {% for transaction in transactions %}
@@ -17,11 +18,14 @@
             <td> {{ transaction.merchant.name }}</td>
             <td> {{ transaction.amount }}</td>
             <td> {{ transaction.description }}</td>
-            <td> {{ transaction.date.strftime("%x") }}</td>
+            <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
          {% endif %}
     </tr>
     </tr>
     {% endfor %}
 </table>
+
+<h2> Monthly Budget </h2>
+<h3>£ {{ category.budget }}</h3>
 
 {% endblock %}

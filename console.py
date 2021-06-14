@@ -31,10 +31,10 @@ merchant_repository.save(merchant2)
 merchant3 = Merchant("Amazon")
 merchant_repository.save(merchant3)
 
-category1 = Category("Food")
+category1 = Category("Food", 100)
 category_repository.save(category1)
 
-category2 = Category("Entertainment")
+category2 = Category("Entertainment", 50)
 category_repository.save(category2)
 
 transaction1 = Transaction(merchant1, category1, "Weekly food shop", 50, x)
