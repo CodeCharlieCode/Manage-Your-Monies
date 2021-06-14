@@ -5,14 +5,12 @@
 <form action="/profiles/{{profile.id}}" method="post">
   <div>
       <label for="balance">Current Balance</label>
-      <input type="float" id="balance" name="balance" value="{{profile1.balance}}" required>
+      <input type="float" id="balance" name="balance" value="{{profile.balance}}" required>
   </div>
-
-  <button type="submit">Update Balance</button>
 
   <div>
       <label for="total_budget">Current Monthly Budget</label>
-      <input type="float" id="total_budget" name="total_budget" value="{{profile1.total_budget}}" required>
+      <input type="float" id="total_budget" name="total_budget" value="{{profile.total_budget}}" required>
   </div>
 
   <button type="submit">Update Balance</button>

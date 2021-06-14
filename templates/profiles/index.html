@@ -11,6 +11,11 @@ Monthly Budget: {{profile.total_budget}}
 
 Total  Spent {{total_amount}}
 
+<form class="edit-form" action="/profiles/{{profile.id}}/edit" method="GET">
+    <td><button type="submit">Edit Balance</button></td>
+    </form>
+
 {% endfor %}
+
 
 {% endblock %}

@@ -1,7 +1,6 @@
 from flask import Blueprint, Flask, redirect,render_template, request
 
 from models.profile import Profile
-from models.transactions import Transaction
 import repositories.profile_repository as profile_repository
 import repositories.transaction_repositiory as transaction_repository
 
@@ -16,10 +15,10 @@ def profiles():
     for transaction in transactions:
         total += transaction.amount
     total_amount = round(total, 2)
-    for profile in profiles:
-        over_budget = profile.total_budget - total_amount
-        if total_amount > profile.balance:
-            return render_template("profiles/insufficient.html", profiles = profiles, profile = profile, over_budget = over_budget)  
+    # for profile in profiles:
+    #     over_budget = profile.total_budget - total_amount
+    #     if total_amount > profile.balance:
+    #         return render_template("profiles/insufficient.html", profiles = profiles, profile = profile, over_budget = over_budget)  
     return render_template("profiles/index.html", profiles = profiles, total_amount = total_amount)
 
 @profile_blueprint.route("/profiles/new")
@@ -40,16 +39,18 @@ def create_profile():
     profile_repository.save(profile)
     return redirect("/profiles")
 
+@profile_blueprint.route("/profiles/<id>/edit", methods=['GET'])
+def edit_profile(id):
+    profile = profile_repository.select(id)
+    return render_template("/profiles/edit.html", profile = profile)
+
 @profile_blueprint.route("/profiles/<id>", methods=['POST'])
 def update_profile(id):
     balance = request.form['balance']
     total_budget = request.form['total_budget']
     profile = Profile(balance, total_budget, id)
+    profile_repository.delete(id)
     profile_repository.update(profile)
+    profile_repository.save(profile)
     return redirect("/profiles")
 
-@profile_blueprint.route("/profiles/<id>/edit/", methods=['GET'])
-def edit_balance(id):
-    profile = profile_repository.select(id)
-    # profile1= Profile(0, 0)
-    return render_template("/profiles/edit.html", profile = profile)
