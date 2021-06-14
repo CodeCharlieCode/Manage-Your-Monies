@@ -1,5 +1,4 @@
 from flask import Blueprint, Flask, redirect, render_template, request
-
 from models.transactions import Transaction
 import repositories.merchant_repository as merchant_repository
 import repositories.transaction_repositiory as transaction_repository
@@ -9,7 +8,8 @@ transactions_blueprint = Blueprint("transactions",__name__)
 
 @transactions_blueprint.route("/transactions/")
 def transactions():
-    transactions = transaction_repository.select_all()
+    print(request.args.get("month"))
+    transactions = transaction_repository.select_all(request.args.get("month"))
     total = 0
     for transaction in transactions:
         total += transaction.amount

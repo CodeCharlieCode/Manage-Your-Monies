@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 from models.transactions import Transaction
 import repositories.merchant_repository as merchant_repository
 import repositories.category_repository as category_repository
+import pdb
 
 def save(transaction):
     sql = "INSERT INTO transactions (merchant_id, category_id, description, amount, date) VALUES (%s, %s, %s, %s, %s) RETURNING id"
@@ -10,12 +11,17 @@ def save(transaction):
     transaction.id = results[0]['id']
     return transaction
 
-def select_all():
+def select_all(month=None):
     transactions = []
 
-    sql = "SELECT * FROM transactions"
-    results = run_sql(sql)
-
+    if month==None:
+        sql = "SELECT * FROM transactions ORDER by date DESC"
+        results = run_sql(sql)
+    else:
+        # sql= "SELECT to_char(date, 'month') as month, extract(month from date) as m, sum(""amount"") as ""amount"" FROM transactions group by 1,2"
+        sql="SELECT * FROM transactions WHERE to_char(date, 'MM') = %s ORDER by date DESC "
+        values = [month]
+        results = run_sql(sql, values)
     for result in results:
         merchant = merchant_repository.select(result['merchant_id'])
         category = category_repository.select(result['category_id'])
