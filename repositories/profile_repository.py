@@ -15,7 +15,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        profile = Profile(result['balance'], result['total_budget'])
+        profile = Profile(result['balance'], result['total_budget', result['id']])
     return profile
 
 def select_all():
@@ -28,3 +28,8 @@ def select_all():
         profile = Profile(result['balance'], result['total_budget'], result['id'])
         profiles.append(profile)
     return profiles
+
+def update(profile):
+    sql = "UPDATE profiles SET (balance, total_budget) =(%s, %s) WHERE id =%s"
+    values = [profile.balance, profile.total_budget]
+    run_sql(sql, values)

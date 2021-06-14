@@ -8,15 +8,48 @@ import repositories.transaction_repositiory as transaction_repository
 profile_blueprint = Blueprint("profiles",__name__)
 
 @profile_blueprint.route("/profiles/")
-def profile():
-    profile = profile_repository.select_all()
-    profile1= Profile(0, 0)
+def profiles():
+    profiles = profile_repository.select_all()
     transactions = transaction_repository.select_all()
+
     total = 0
     for transaction in transactions:
         total += transaction.amount
     total_amount = round(total, 2)
-    if total_amount > profile1.balance:
-        return render_template("profiles/insufficient.html")
-    profile_repository.save(profile1)   
-    return render_template("profiles/index.html", profile = profile, profile1 = profile1, total_amount=total_amount)
+    for profile in profiles:
+        over_budget = profile.total_budget - total_amount
+        if total_amount > profile.balance:
+            return render_template("profiles/insufficient.html", profiles = profiles, profile = profile, over_budget = over_budget)  
+    return render_template("profiles/index.html", profiles = profiles, total_amount = total_amount)
+
+@profile_blueprint.route("/profiles/new")
+def new():
+    profiles = profile_repository.select_all()
+    return render_template("profiles/new.html", profiles = profiles)
+
+@profile_blueprint.route("/profiles/<id>", methods=['GET'])
+def show_profile(id):
+    profile = profile_repository(id)
+    return render_template("profiles/index.html", profile = profile)
+
+@profile_blueprint.route("/profiles", methods=['POST'])
+def create_profile():
+    balance = request.form['balance']
+    total_budget = request.form['total_budget']
+    profile = Profile(balance, total_budget)
+    profile_repository.save(profile)
+    return redirect("/profiles")
+
+@profile_blueprint.route("/profiles/<id>", methods=['POST'])
+def update_profile(id):
+    balance = request.form['balance']
+    total_budget = request.form['total_budget']
+    profile = Profile(balance, total_budget, id)
+    profile_repository.update(profile)
+    return redirect("/profiles")
+
+@profile_blueprint.route("/profiles/<id>/edit/", methods=['GET'])
+def edit_balance(id):
+    profile = profile_repository.select(id)
+    # profile1= Profile(0, 0)
+    return render_template("/profiles/edit.html", profile = profile)

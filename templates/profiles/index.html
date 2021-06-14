@@ -3,10 +3,14 @@
 {% block content %}
 
 
-Current Balance: {{profile1.balance}}
+{% for profile in profiles %}
 
-Monthly Budget: {{profile1.total_budget}}
+Current Balance: {{profile.balance}}
+
+Monthly Budget: {{profile.total_budget}}
 
 Total  Spent {{total_amount}}
+
+{% endfor %}
 
 {% endblock %}

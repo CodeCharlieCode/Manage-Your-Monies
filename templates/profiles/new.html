@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/profiles" method="post">
+    <div>
+
+        <label for="balance">Amount</label>
+        <input type="number" step="any" id="balance" name="balance" required>
+    </div>
+
+    <div>
+        <label for="total_budget">Monthly Budget</label>
+        <input type="number" step="any" id="total_budget" name="total_budget" required>
+    </div>
+
+    <button type="submit">Create Balance</button>
+
+
+</form>
+ 
+{% endblock %}
