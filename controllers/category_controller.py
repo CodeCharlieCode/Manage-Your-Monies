@@ -27,7 +27,7 @@ def show(id):
         if category.id == transaction.category.id:
             total += transaction.amount
         total_amount = round(total, 2)
-    remaining_budget = category.budget -total_amount
+    remaining_budget = round(category.budget -total_amount, 2)
     return render_template("categories/show.html", category = category, transactions = transactions, remaining_budget =remaining_budget)
 
 @category_blueprint.route("/categories/new/")

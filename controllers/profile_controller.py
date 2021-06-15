@@ -41,8 +41,7 @@ def show_profile(id):
 @profile_blueprint.route("/profiles", methods=['POST'])
 def create_profile():
     balance = request.form['balance']
-    total_budget = request.form['total_budget']
-    profile = Profile(balance, total_budget)
+    profile = Profile(balance)
     profile_repository.save(profile)
     return redirect("/profiles")
 
@@ -54,8 +53,7 @@ def edit_profile(id):
 @profile_blueprint.route("/profiles/<id>", methods=['POST'])
 def update_profile(id):
     balance = request.form['balance']
-    total_budget = request.form['total_budget']
-    profile = Profile(balance, total_budget, id)
+    profile = Profile(balance, id)
     profile_repository.delete(id)
     profile_repository.update(profile)
     profile_repository.save(profile)

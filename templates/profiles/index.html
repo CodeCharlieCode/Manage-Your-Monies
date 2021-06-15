@@ -5,7 +5,11 @@
 
 {% for profile in profiles %}
 
-Current Balance: {{profile.balance}}
+{% set current_balance = profile.balance - total_amount %}
+
+Monthly Start Off Balance: {{profile.balance}}
+
+Current Balance:{{'%0.2f' % current_balance|float}}
 
 Monthly Budget: {{sum_of_budgets}}
 
