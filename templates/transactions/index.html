@@ -1,81 +1,87 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1> Recent Transactions</h1>
+<body class="transactions-background">
+    <h1> Recent Transactions</h1>
 
-<form action="/transactions">
-    <select name="month">
-        <option value="01">Jan</option>
-        <option value="02">Feb</option>
-        <option value="03">Mar</option>
-        <option value="04">Apr</option>
-        <option value="05">May</option>
-        <option value="06">Jun</option>
-        <option value="07">Jul</option>
-        <option value="08">Aug</option>
-        <option value="09">Sep</option>
-        <option value="10">Oct</option>
-        <option value="11">Nov</option>
-        <option value="12">Dec</option>
-    </select>
-    <button type=submit>Filter by month</button>
-</form>
-
-<table>
-    <tr>
-        <th>Merchant</th>
-        <th>Amount £</th>
-        <th>Tag</th>
-        <th>Description</th>
-        <th>Date</th>
-    </tr>
-    {% for transaction in transactions %}
-    <tr>
-        <td> {{ transaction.merchant.name }}</td>
-        <td> {{ "£%.2f"|format(transaction.amount) }}</td>
-        <td> {{ transaction.category.name }}</td>
-        <td> {{ transaction.description }} </td>
-        <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
-    </tr>
+    <form action="/transactions">
+        <select name="month">
+            <option value="01">Jan</option>
+            <option value="02">Feb</option>
+            <option value="03">Mar</option>
+            <option value="04">Apr</option>
+            <option value="05">May</option>
+            <option value="06">Jun</option>
+            <option value="07">Jul</option>
+            <option value="08">Aug</option>
+            <option value="09">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+        </select>
+        <button type=submit>Filter by month</button>
+    </form>
 
 
+    <table>
+        <div class="transaction-table"></div>
+            <tr>
+                <th><h2>Merchant&nbsp;</h2></th>
+                <th><h2>Amount&nbsp;</h2></th>
+                <th><h2>Category&nbsp;</h2></th>
+                <th><h2>Description&nbsp;</h2></th>
+                <th><h2>Date&nbsp;</h2></th>
+            </tr>
+        {% for transaction in transactions %}
+            <tr>
+                <td> {{ transaction.merchant.name }}</td>
+                <td> {{ "£%.2f"|format(transaction.amount) }}</td>
+                <td> {{ transaction.category.name }}</td>
+                <td> {{ transaction.description }}</td>
+                <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
+            </tr>
+        </div>  
+    </table>
+</body>
 
 
-    <tr>
-        <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
-        <td><button type="submit">Delete Transaction</button></td>
-        </form>
-    </tr>
 
-    <tr>
-        <form class="edit-form" action="/transactions/{{transaction.id}}/edit" method="GET">
-        <td><button type="submit">Edit Transaction</button></td>
-        </form>
-    </tr>
 
-    {% endfor %}
+    <div class="transaction-buttons">
+            <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
+            <td><button class="button delete" type="submit">Delete</button></td>
+            </form>
+        
+            <form class="edit-form" action="/transactions/{{transaction.id}}/edit" method="GET">
+            <td><button type="submit" class="button edit" >Edit</button></td>
+            </form>
+        
+        </div>
+
+        {% endfor %}
 
 
     Total:{{ "£%.2f"|format(total_amount) }}
 
-    
+        
 
 
-    
+        
 
 
 
 
 
-    
-    
-    
+        
+        
+        
 
 
-    
+        
 
-    
+        
 
-    
-</table>
+        
+    </table>
+</body>
 {% endblock %}

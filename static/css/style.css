@@ -1,14 +1,91 @@
-body{
+body.home{
     font-family:monospace; font-size:17px ;font-weight: bold;
     color: white;
     background-image: url("/static/images/image.png");
     background-size: cover;
     
   }
+body.transactions-background{
+  background-color: aquamarine;
+  background-size: cover;
+}
+.profile-info ul li{
+  list-style: none;
+
+}
+.button {
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;}
+
+.delete{
+  background-color: #4CAF50; /* Green */
+}
+.edit{
+  background-color: lightcoral;
+  display: flex;
+  
+}
+
+.balance{
+  background-color: rgb(155, 45, 146);
+  margin-left: 100px;
+}
+
+.transaction-buttons{
+  display: flex;
+  justify-content: right;
+  align-items:center
+}
+.category-buttons{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  
+}
+
+.category-table li {
+  display:flex ;
+  flex-direction: row;
+}
+
+.transaction-table{
+  /* border-radius: 12px;
+  background-color: lightcyan;
+  display: flex;
+  display: inline-block;
+  text-align: center; */
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 
 h1{
   color: red;
   font-weight: bold; 
+  display: flex;
+  justify-content: center;
+}
+
+.welcome{
+  display: flex;
+  align-content: center;
+
 }
 
 /* Referenced from https://css-tricks.com/solved-with-css-dropdown-menus/ */
@@ -25,6 +102,7 @@ nav ul {
   list-style: none;
   margin: 0;
   padding-left: 0;
+  height: 50px
 }
 
 nav li {
@@ -40,6 +118,7 @@ nav li {
   
 nav li a {
   color: #fff;
+  line-height: 10px;
 }
 
 nav li:hover {

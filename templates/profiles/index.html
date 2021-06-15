@@ -2,22 +2,24 @@
 
 {% block content %}
 
+<div class ="profile-info">
+    {% for profile in profiles %}
 
-{% for profile in profiles %}
+    {% set current_balance = profile.balance - total_amount %}
+    <ul>
+        <li>Monthly Start Off Balance: £{{profile.balance}}</li>
 
-{% set current_balance = profile.balance - total_amount %}
+        <li>Current Balance: £{{'%0.2f' % current_balance|float}}</li>
 
-Monthly Start Off Balance: {{profile.balance}}
-
-Current Balance:{{'%0.2f' % current_balance|float}}
-
-Monthly Budget: {{sum_of_budgets}}
-
-Total  Spent {{total_amount}}
+        <li>Monthly Budget: £{{sum_of_budgets}}</li>
+    </ul>
+</div>
 
 <form class="edit-form" action="/profiles/{{profile.id}}/edit" method="GET">
-    <td><button type="submit">Edit Balance</button></td>
-    </form>
+    <td><button class="button balance"type="submit">Edit Balance</button></td>
+</form>
+Total Spent £{{total_amount}}
+
 
 {% endfor %}
 
