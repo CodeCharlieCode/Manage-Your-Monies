@@ -1,3 +1,4 @@
+from controllers.transactions_controller import transactions
 from db.run_sql import run_sql
 from models.transactions import Transaction
 import repositories.merchant_repository as merchant_repository
@@ -55,3 +56,14 @@ def select(id):
         category = category_repository.select(result['category_id'])
         transaction = Transaction(merchant, category, result['description'], result['amount'], result['date'], result['id'])
     return transaction
+
+def month():
+    transactions = []
+    sql = "SELECT * FROM transactions WHERE to_char(date, 'MM') = to_char(CURRENT_DATE, 'MM') ORDER by date DESC"
+    results = run_sql(sql)
+    for result in results:
+        merchant = merchant_repository.select(result['merchant_id'])
+        category = category_repository.select(result['category_id'])
+        transaction = Transaction(merchant, category, result['description'], result['amount'], result['date'], result['id'])
+        transactions.append(transaction)
+    return transactions

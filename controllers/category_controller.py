@@ -10,6 +10,7 @@ category_blueprint = Blueprint("categories",__name__)
 @category_blueprint.route("/categories/")
 def categories():
     categories = category_repository.select_all()
+    transactions =transaction_repository.select_all()
     total = 0
     for category in categories:
         total += category.budget

@@ -11,7 +11,7 @@ profile_blueprint = Blueprint("profiles",__name__)
 @profile_blueprint.route("/profiles/")
 def profiles():
     profiles = profile_repository.select_all()
-    transactions = transaction_repository.select_all()
+    transactions = transaction_repository.month()
     categories = category_repository.select_all()
 
     total = 0
