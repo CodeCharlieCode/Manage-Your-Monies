@@ -3,22 +3,22 @@
 {% block content %}
 <h1>Categories</h1>
 
-<div class=category-table>
+<ul class=category-table>
 
         
     {% for category in categories %}
-        <li><a href="category/{{ category.id }}"> {{category.name}}</a></li>
+        <li>
+            <a href="category/{{ category.id }}"> {{category.name}}</a>
+            <form class="delete-form" action="/categories/{{category.id}}/delete" method="POST">
+                <button type="submit" class="button delete">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+        
         
    
-</div>
-
-<div class category-buttons>
-    <form class="delete-form" action="/categories/{{category.id}}/delete" method="POST">
-    <td><button type="submit" class="button delete">Delete</button></td>
-    </form>
-</div>
-
-        {% endfor %}
+</ul>
+ 
 
 Sum Of Budgets:£{{sum_of_budgets}}
 

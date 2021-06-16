@@ -23,14 +23,14 @@
     </form>
 
 
-    <table>
-        <div class="transaction-table"></div>
+    <table class="transaction-table">
             <tr>
-                <th><h2>Merchant&nbsp;</h2></th>
-                <th><h2>Amount&nbsp;</h2></th>
-                <th><h2>Category&nbsp;</h2></th>
-                <th><h2>Description&nbsp;</h2></th>
-                <th><h2>Date&nbsp;</h2></th>
+                <th><h2>Merchant</h2></th>
+                <th><h2>Amount</h2></th>
+                <th><h2>Category</h2></th>
+                <th><h2>Description</h2></th>
+                <th><h2>Date</h2></th>
+                <th><h2>ACTIONS</h2></th>
             </tr>
         {% for transaction in transactions %}
             <tr>
@@ -39,49 +39,29 @@
                 <td> {{ transaction.category.name }}</td>
                 <td> {{ transaction.description }}</td>
                 <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
-            </tr>
-        </div>  
+                <td> 
+                    <div class="transaction-buttons">
+                        <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
+                            <button class="button delete" type="submit">Delete</button>
+                        </form>
+                    
+                        <form class="edit-form" action="/transactions/{{transaction.id}}/edit" method="GET">
+                            <button type="submit" class="button edit" >Edit</button>
+                        </form>
+                
+                    </div>
+                </td>
+            </tr> 
+        {% endfor %}
     </table>
 </body>
 
 
 
 
-    <div class="transaction-buttons">
-            <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
-            <td><button class="button delete" type="submit">Delete</button></td>
-            </form>
-        
-            <form class="edit-form" action="/transactions/{{transaction.id}}/edit" method="GET">
-            <td><button type="submit" class="button edit" >Edit</button></td>
-            </form>
-        
-        </div>
-
-        {% endfor %}
 
 
     Total:{{ "£%.2f"|format(total_amount) }}
 
-        
 
-
-        
-
-
-
-
-
-        
-        
-        
-
-
-        
-
-        
-
-        
-    </table>
-</body>
 {% endblock %}
