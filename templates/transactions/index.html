@@ -28,17 +28,16 @@
                 <th><h2>Merchant</h2></th>
                 <th><h2>Amount</h2></th>
                 <th><h2>Category</h2></th>
-                <th><h2>Description</h2></th>
                 <th><h2>Date</h2></th>
-                <th><h2>ACTIONS</h2></th>
+                <th><h2>Description</h2></th>
             </tr>
         {% for transaction in transactions %}
             <tr>
                 <td> {{ transaction.merchant.name }}</td>
                 <td> {{ "£%.2f"|format(transaction.amount) }}</td>
                 <td> {{ transaction.category.name }}</td>
-                <td> {{ transaction.description }}</td>
                 <td> {{ transaction.date.strftime("%a, %d,%b, %Y") }}</td>
+                <td> {{ transaction.description }}</td>
                 <td> 
                     <div class="transaction-buttons">
                         <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
@@ -61,7 +60,7 @@
 
 
 
-    Total:{{ "£%.2f"|format(total_amount) }}
+<h2>Total:{{ "£%.2f"|format(total_amount) }}</h2>
 
 
 {% endblock %}

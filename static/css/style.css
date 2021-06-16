@@ -13,11 +13,55 @@ body.transactions-background{
   list-style: none;
 
 }
+
+input[type=text], select, textarea {
+  width: 15%; /* Full width */
+  padding: px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 8px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical 
+}
+
+input[type=number], select, textarea {
+  width: 15%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 8px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical 
+}
+
+input[type=date], select, textarea {
+  width: 15%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 8px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical 
+}
+
+input[type=float], select, textarea {
+  width: 15%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 8px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical 
+}
 .button {
   border-radius: 12px;
   border: none;
   color: white;
-  padding: 5px;
+  padding: 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -51,6 +95,25 @@ body.transactions-background{
   
 }
 
+.merchant-table{
+  display: flex;
+  flex-direction: row;
+
+}
+.merchant-table li{
+  list-style: none;
+  margin-right: 20px;
+  padding: 20px;
+
+}
+
+.merchant-table li a{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+
+}
+
 .category-table{
   display:flex ;
   flex-direction: row;
@@ -63,6 +126,12 @@ body.transactions-background{
   padding: 20px;
 }
 
+.category-table li a{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
 .transaction-table{
   /* border-radius: 12px;
   background-color: lightcyan;
@@ -71,7 +140,7 @@ body.transactions-background{
   text-align: center; */
   border-radius: 12px;
   /* border: 1px solid black; */
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 10px;
   text-align: center;
   text-decoration: none;
@@ -79,6 +148,8 @@ body.transactions-background{
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  /* border-style:solid; */
+  background-color: rgb(128, 172, 180);
 }
 
 /* .transaction-table h2{
@@ -93,7 +164,7 @@ body.transactions-background{
 
 
 h1{
-  color: red;
+  color: rgb(238, 0, 0);
   font-weight: bold; 
   display: flex;
   justify-content: center;

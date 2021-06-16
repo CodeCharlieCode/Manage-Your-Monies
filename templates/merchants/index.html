@@ -2,19 +2,18 @@
 {% block content %}
 <h1>Merchants</h1>
 
-<table>
-    <tr>
-        <th>Name</th>
-    </tr>
+<ul class=merchant-table>
+
     {% for merchant in merchants %}
-    <tr>
-        <td><a href="/merchants/{{ merchant.id }}"> {{merchant.name}}</a></td>
-    </tr>
-    <tr>
-        <form class="delete-form" action="/merchants/{{merchant.id}}/delete" method="POST">
-        <td><button type="submit">Delete Merchant</button></td>
-        </form>
-    </tr>
+        <li>
+            <a href="/merchants/{{ merchant.id }}"> {{merchant.name}}</a>
+        
+            <form class="delete-form" action="/merchants/{{merchant.id}}/delete" method="POST">
+                <button type="submit" class="button delete">Delete</button>
+            </form>
+        </li>
     {% endfor %}
-</table>
+
+
+</ul>
 {% endblock %}

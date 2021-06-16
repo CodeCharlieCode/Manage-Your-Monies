@@ -12,13 +12,14 @@
         <li>Current Balance: £{{'%0.2f' % current_balance|float}}</li>
 
         <li>Monthly Budget: £{{sum_of_budgets}}</li>
+
     </ul>
 </div>
 
 <form class="edit-form" action="/profiles/{{profile.id}}/edit" method="GET">
     <td><button class="button balance"type="submit">Edit Balance</button></td>
 </form>
-Total Spent £{{total_amount}}
+Total Spent This Month: £{{total_amount}}
 
 
 {% endfor %}
