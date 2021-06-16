@@ -2,42 +2,44 @@
 
 {% block content %}
 
-<form action="/transactions" method="post">
-  <div class="merchants-new">
-      <label for="merchant">Merchant</label>
-      <select id="merchant" name="merchant_id">
-        {% for merchant in merchants %}
-            <option value="{{ merchant.id }}"> {{ merchant.name }}</option>
-        {% endfor %}
-      </select>
-  </div>
+<div class="new-transaction">
+    <form action="/transactions" method="post">
+    <div class="merchants-new">
+        <label for="merchant">Merchant</label>
+        <select id="merchant" name="merchant_id">
+            {% for merchant in merchants %}
+                <option value="{{ merchant.id }}"> {{ merchant.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
 
-  <div>
-      <label for="amount">Amount</label>
-      <input type="number" step="any" id="amount" name="amount" placeholder="How much did it cost?" required>
-  </div>
+    <div>
+        <label for="amount">Amount</label>
+        <input type="number" step="any" id="amount" name="amount" placeholder="How much did it cost?" required>
+    </div>
 
-  <div>
-      <label for="category">Category</label>
-      <select id="category" name="category_id">
-          {% for category in categories %}
-            <option value="{{ category.id }}"> {{ category.name }}</option>
-          {% endfor %}  
-      </select>
-  </div>
+    <div>
+        <label for="category">Category</label>
+        <select id="category" name="category_id">
+            {% for category in categories %}
+                <option value="{{ category.id }}"> {{ category.name }}</option>
+            {% endfor %}  
+        </select>
+    </div>
 
-  <div>
-      <label for="description">Description</label>
-      <input type="text" id="description" name="description" placeholder='"Weekly Shop"'>
-  </div>
+    <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" maxlength="35" placeholder='"Weekly Shop"'>
+    </div>
 
-  <div>
-      <label for="date">Date</label>
-      <input type="date" id="date" name="date" required>
-  </div>
+    <div>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+    </div>
 
-  <button type="submit">Add Transaction</button>
+    <button type="submit">Add Transaction</button>
 
-</form>
+    </form>
+</div>
  
 {% endblock %}
