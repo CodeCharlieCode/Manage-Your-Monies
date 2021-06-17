@@ -20,9 +20,10 @@ def categories():
 @category_blueprint.route("/categories/category/<id>")
 def show(id):
     category = category_repository.select(id)
-    # transactions = category_repository.transactions(category)
+    # transactions = transaction_repository.month()
     transactions =transaction_repository.select_all()
     total = 0
+    total_amount = 0
     for transaction in transactions:
         if category.id == transaction.category.id:
             total += transaction.amount
