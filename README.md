@@ -28,4 +28,4 @@ Eating Out") and then assign a budget to that category.
 * <b>Monthly Start Off Balance</b> - the user can edit this when they "click" the edit balance button.
 * <b>Current Balance</b> - this is calculated by subtracting the "Total Spent This Month" amount from the "Monthly Start off Balance".
 * <b>Monthly Budget</b> - in the categories section the user can assign a budget to a category e.g.("Food", £210). The monthly budget is calculated by taking the sum of the budgets that have been assigned to each category.
-* <b>Total Spent This Month</b> - this is calculated by taking the sum of all the transactions that have taken place over the current month
+* <b>Total Spent This Month</b> - this is calculated by taking the sum of all the transactions that have occurred over the current month.
