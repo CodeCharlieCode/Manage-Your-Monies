@@ -2,7 +2,7 @@
 
 ---
 
-Manage Your monies is a web application for creating and storing transactions. The app is intended to be used a budgeting tool as well as a spending tracker. 
+Manage Your Monies is a web application that can be used for creating and storing transactions. The app functions as a budgeting tool and a spending tracker. 
 
 ---
 <b>Key Features</b>
