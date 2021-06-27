@@ -10,11 +10,11 @@ Manage Your Monies is a web application that can be used for creating and storin
 <b>Key Features</b>
 
 * The application allows you to create different categories e.g("Food", "Entertainment",
-Eating Out") and then assign a budget to the category.
+Eating Out") and then assign a budget to that category.
 
 * The application allows you to create merchants, assign merchants to transactions and view all transactions that have occured with a selected merchant.
 
-* The application allows you to create transactions and assign a merchant and category to the transaction.
+* The application allows you to create transactions and assign a merchant and category to that transaction.
 
 * The application allows you to sort and view transactions by month.
 
