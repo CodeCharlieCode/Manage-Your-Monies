@@ -36,7 +36,7 @@ Eating Out") and then assign a budget to that category.
 <h2>General Brief</h2>
 
 * 7 days to plan, design and create an app.
-* Restricted to only use python, HMTL and CSS - no JavaScript :( 
+* Restricted to only using python, HMTL and CSS - no JavaScript :( 
 
 <h2>Specific Brief</h2>
 <h3>Spending Tracker</h3>
