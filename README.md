@@ -29,3 +29,29 @@ Eating Out") and then assign a budget to that category.
 * <b>Current Balance</b> - this is calculated by subtracting the "Total Spent This Month" amount from the "Monthly Start off Balance".
 * <b>Monthly Budget</b> - in the categories section the user can assign a budget to a category e.g.("Food", £210). The monthly budget is calculated by taking the sum of the budgets that have been assigned to each category.
 * <b>Total Spent This Month</b> - this is calculated by taking the sum of all the transactions that have occurred over the current month.
+
+---
+<h1>The Project Brief</h1>
+
+<h2>General Brief</h2>
+
+* 7 days to plan, design and create an app.
+* Restricted to only use python, HMTL and CSS - no JavaScript :( 
+
+<h2>Specific Brief</h2>
+<h3>Spending Tracker</h3>
+
+Build an app that allows a user to track their spending.
+
+<b>MVP</b>
+* The app should allow the user to create and edit merchants, e.g. Tesco, Amazon, ScotRail.
+* The app should allow the user to create and edit tags for their spending, e.g. groceries, entertainment, transport.
+* The user should be able to assign tags and merchants to a transaction, as well as an amount spent on each transaction.
+* The app should display all the transactions a user has made in a single view, with each transaction's amount, merchant and tag, and a total for all transactions.
+Inspired by:
+Monzo, MoneyDashboard, lots of mobile/online banking apps
+
+<b>Extensions</b>
+
+* Transactions should have a timestamp, and the user should be able to view transactions sorted by the date they took place.
+* The user should be able to filter their view of transactions, for example, to view all transactions in a given month, or view all spending on groceries.
