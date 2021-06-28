@@ -55,3 +55,7 @@ Monzo, MoneyDashboard, lots of mobile/online banking apps
 
 * Transactions should have a timestamp, and the user should be able to view transactions sorted by the date they took place.
 * The user should be able to filter their view of transactions, for example, to view all transactions in a given month, or view all spending on groceries.
+
+---
+<h2>Final Comments</h2>
+
